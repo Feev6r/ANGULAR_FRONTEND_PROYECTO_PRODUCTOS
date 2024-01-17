@@ -1,0 +1,43 @@
+.general{
+    background-color: #EDEDED;
+    height: 750px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    border-radius: 10px;
+    color: white;
+}
+
+.contenedorFormulario{
+    background-color: #3F3F3F;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario{
+    margin: 10px 10px;
+    background-color: #343030;
+    flex: 1;
+}
+
+.form{
+   display: grid;
+   margin: 0px 10px;
+
+}
+
+.form span{
+    text-align: center;
+    margin: 15px 0px;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+.contenedor.Abajo{
+    display: flex;
+}
+
+.descripcionContenedor{
+    background-color: #666666;
+    display: grid;
+}
+
+
+.descriptioSpan{
+    padding: 10px 10px 10px 10px;
+    font-size: 1.2rem;
+}
+
+.descriptionText{
+    padding: 0px 10px 10px 10px;
+}
+
+/* --------------------- */
+
+.interaction{
+    flex: 1;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+
+    margin-left: 30px;
+}
+
+.buy{
+    padding: 10px 30px;
+    background-color: #379C4E;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+
+
+
+
+.buy:hover{
+    background-color: #379c4fd7;
+}
+
+.buy:active{
+    transform: scale(0.96);
+}

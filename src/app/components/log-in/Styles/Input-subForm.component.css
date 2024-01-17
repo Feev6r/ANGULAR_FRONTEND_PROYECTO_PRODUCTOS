@@ -1,0 +1,24 @@
+.subForm input{ 
+    width: 420px;
+    height: 25px;
+    border-radius: 2px;
+    border: none;
+    background-color: #666666;
+
+    color: white ;
+    font-size: 1rem;
+    font-family: 'Josefin Sans', sans-serif;
+    padding-top: 2px;
+    padding-left: 6px;
+}
+
+
+.subForm input:focus {
+    outline-color: #EDEDED;
+  }
+
+.subForm input::placeholder {
+    color: white;
+    opacity: 0.3;
+    font-family: 'Josefin Sans', sans-serif;
+  }

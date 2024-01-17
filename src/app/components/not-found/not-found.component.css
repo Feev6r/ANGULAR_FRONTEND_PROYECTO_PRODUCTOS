@@ -1,0 +1,46 @@
+.general-Container{
+    background-color: #EDEDED;
+    height: 750px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+    color: white;
+}
+
+.advice-Container{
+    display: grid;
+    justify-items: center;
+}
+
+.advice-Number{
+    font-size: 18em;
+    color: #666666;
+    user-select: none;
+
+}
+
+.advice-Text{
+    color: #666666;
+    font-size: 1.5em;
+}
+
+.button-Back{
+    background-color: #379C4E;
+    padding: 8px 28px 8px 28px;
+    border-radius: 4px;
+    margin-top: 20px;
+    font-size: 0.8em;
+
+    cursor: pointer;
+    user-select: none;
+    
+}
+
+.button-Back:hover{
+    background-color: #379c4fd7;
+}
+.button-Back:active{
+    transform: scale(0.98);
+}

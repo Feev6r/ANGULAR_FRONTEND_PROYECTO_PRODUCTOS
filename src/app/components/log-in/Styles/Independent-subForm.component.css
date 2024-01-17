@@ -1,0 +1,60 @@
+.subForm.one {
+    display: grid;
+    justify-content: center;
+}
+
+.subForm.one span{
+    position: relative;
+    bottom: 30px;
+    background-color: #3F3F3F;
+    padding: 20px 80px;
+    border-radius: 5px;
+    margin: 0;
+    font-size: 1.5rem;
+
+    user-select: none;
+}
+
+
+.subForm.three{
+    margin-bottom: 20px;
+
+}
+
+.subForm.four{
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 10px 10px 10px;
+}
+
+.subForm.four > .errorMessage{
+    flex: 1;
+    padding: 0px;
+    max-width: 350px;
+    word-wrap: break-word;
+    color: rgba(165, 42, 42, 0.781);
+
+    /* background-color:rgba(255, 0, 0, 0.028); */
+}
+
+
+.subForm.four > .button-Done{
+    background-color: #379C4E;
+    padding: 10px 25px;
+    border-radius: 3px;
+    align-self: flex-end;
+
+    color: white;
+    cursor: pointer;
+    outline: none;
+    border: none;
+
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.subForm.four > .button-Done:hover{
+    background-color: #379c4fd7;
+}
+.subForm.four > .button-Done:active{
+    transform: scale(0.98);
+}

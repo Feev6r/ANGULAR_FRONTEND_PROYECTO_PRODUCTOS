@@ -1,0 +1,35 @@
+.general-Container{
+    background-color: #EDEDED;
+    height: 750px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+    color: white;
+}
+
+.form-Container{
+    background-color: #3F3F3F;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    margin: 10px 10px;
+    background-color: #343030;
+    flex: 1;
+}
+
+.subForm{
+    display: grid;
+    margin: 0px 10px;
+ 
+ }
+ 
+ .subForm span{
+     text-align: center;
+     margin: 15px 0px;
+ }

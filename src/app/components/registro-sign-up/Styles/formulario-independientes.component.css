@@ -1,0 +1,81 @@
+
+.form.uno{
+    display: grid;
+    justify-content: center;
+}
+
+.form.uno span{
+    position: relative;
+    bottom: 30px;
+    background-color: #3F3F3F;
+    padding: 20px 80px;
+    border-radius: 5px;
+    margin: 0;
+    font-size: 1.5rem;
+
+    user-select: none;
+
+}
+
+.form.cinco{
+    margin-bottom: 20px;
+}
+.form.seis{
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 10px 10px 10px;
+}
+
+
+/* ---------------BUTTON-------------- */
+
+.form.seis .Done{
+    background-color: #379C4E;
+    padding: 10px;
+    border-radius: 3px;
+    align-self: flex-end;
+
+    color: white;
+    cursor: pointer;
+    outline: none;
+    border: none;
+
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+
+.form.seis .Done-Uncliqueable{
+    background-color: #379C4E;
+    padding: 10px;
+    border-radius: 3px;
+    align-self: flex-end;
+
+    color: white;
+    cursor: pointer;
+    outline: none;
+    border: none;
+
+    font-family: 'Josefin Sans', sans-serif;
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.form.seis .Done:hover{
+    background-color: #379c4fd7;
+}
+.form.seis .Done:active{
+    transform: scale(0.98);
+}
+
+/* ----------------ERROR-MESSAGE-------------- */
+
+.form.seis .mensajeError{
+    flex: 1;
+    padding: 0px;
+    max-width: 350px;
+    word-wrap: break-word;
+    color: rgba(165, 42, 42, 0.781);
+
+    /* background-color:rgba(255, 0, 0, 0.028); */
+}

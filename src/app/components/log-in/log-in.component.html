@@ -1,0 +1,29 @@
+<div class="general-Container">
+  <div class="form-Container">
+    <form [formGroup]="loginform" class="form">
+      <div class="subForm one">
+        <span>Log in</span>
+      </div>
+      <div class="subForm two">
+        <span>Name</span>
+        <input type="text" placeholder="Name" formControlName="name" />
+      </div>
+      <div class="subForm three">
+        <span>Password</span>
+        <input
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+        />
+      </div>
+      <div class="subForm four">
+        <div class="errorMessage">{{ mensajeError }}</div>
+        @if(!pressButton && !cargando){
+        <button class="button-Done" (click)="Mimetodo()">Done</button>
+        } @else {
+        <app-loading-circle class="a"></app-loading-circle>
+        }
+      </div>
+    </form>
+  </div>
+</div>
