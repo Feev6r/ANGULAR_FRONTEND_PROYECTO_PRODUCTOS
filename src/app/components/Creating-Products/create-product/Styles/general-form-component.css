@@ -1,0 +1,46 @@
+.general-container{
+    height: 100%;
+    background-color: rgb(62, 62, 62);
+    margin: 0;
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    color: white;
+
+    border-radius: 8px;
+}
+
+.sub-general-container{
+    background-color: #343030;
+    width: 100%;
+    margin: 15px;
+    border-radius: 5px;
+    /* display: flex; */
+    /* flex-direction: row; */
+
+    display: grid; 
+    /* flex: 1; */
+    align-content: flex-start;
+    grid-template-rows:auto auto auto auto auto 2fr ; 
+
+}
+
+/* ----------TITLE------------- */
+
+.title-container{
+    background-color: #666666;
+    margin: 10px 20px;
+    border-radius: 5px;
+
+}
+
+.title {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding: 8px;
+    font-size: 1.4em;
+
+}
+

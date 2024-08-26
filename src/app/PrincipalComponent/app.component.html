@@ -1,0 +1,65 @@
+<nav>
+  <div class="subNavBar">
+    <ul class="listaNav">
+      <li>
+        <a href="">Publications</a>
+      </li>
+      <li>
+        <a href="/edit">Edit</a>
+      </li>
+      <li>
+        <a href="/create">Create</a>
+      </li>
+    </ul>
+    <!-- <div class="search-Container">
+      <input class="search" type="text" />
+      <div class="search-Button">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </div> -->
+    <div class="leftContainer">
+      @if(isLoggin){
+
+      <!-- <div class="num-cart-container">
+        <span>0</span>
+        <i class="fa-solid fa-cart-shopping fa-2xl"></i>
+      </div> -->
+
+      <div class="user-Name">
+        <span>{{ UserName }}</span>
+      </div>
+      }
+      <div class="menu" role="button" tabindex="0" (click)="DesplegarMenu()">
+        <span class="material-symbols-outlined"> menu</span>
+        @if (mostrar == true) {
+
+        <ul class="dropdown">
+          @if(!isLoggin){
+
+          <li><a href="login">Log In</a></li>
+          <li><a href="signup">Sign Up</a></li>
+
+          } @else {
+
+          <li>
+            <a href="#" role="button" tabindex="0" (click)="LogOut()"
+              >Log Out</a
+            >
+          </li>
+
+          }
+          <li><a href="edit">Edit</a></li>
+          <li><a href="create">Create</a></li>
+        </ul>
+        }
+      </div>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+
+<!-- <app-log-in (IsLoggin)="a($event)"></app-log-in> -->
+<!-- componente publicacion con subcomponentes de mostrar-producto
+y descripcion-producto, asi con los demas de edit, crear -->
+
+<footer></footer>

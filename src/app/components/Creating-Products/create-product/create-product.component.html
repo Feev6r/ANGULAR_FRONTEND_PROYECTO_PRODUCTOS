@@ -1,0 +1,86 @@
+<div class="general-container">
+  <form class="sub-general-container">
+    <div class="title-container">
+      <div class="title">
+        <span>Product creation</span>
+      </div>
+    </div>
+    <div class="title-creation-container">
+      <div class="title-creation">
+        <span>Title</span>
+      </div>
+      <input type="text" class="title-creation-input" placeholder="Enter the title..." />
+    </div>
+    <div class="description-general-container">
+      <div class="description-container">
+        <div class="description-title">
+          <span>Description</span>
+        </div>
+        <textarea name="" id="" cols="50" rows="4" class="description-input"
+          placeholder="Enter the description..."></textarea>
+      </div>
+    </div>
+    <div class="image-category-container">
+      <div class="image-container">
+        <label for="image"><span>Select Image</span></label>
+        <input type="file" name="image" id="image" (change)="onFileSelected($event)" accept="image/*" />
+        <div class="image-preview">
+          @if(imageUrl){
+          <img class="sub-image-preview" [src]="imageUrl" alt="a" />
+          }
+        </div>
+      </div>
+      <div class="general-category-container">
+        <div class="title-category-container">
+          <div class="category-tile">
+            <span>Category</span>
+          </div>
+          <div class="category-arrow">
+            <span>↓</span>
+          </div>
+        </div>
+        <ul class="category-container">
+          <li><span class="material-symbols-outlined"> nutrition </span></li>
+          <li><span class="material-symbols-outlined"> nutrition </span></li>
+          <li><span class="material-symbols-outlined"> nutrition </span></li>
+          <li><span class="material-symbols-outlined"> nutrition </span></li>
+          <li><span class="material-symbols-outlined"> nutrition </span></li>
+          <li><span class="material-symbols-outlined"> nutrition </span></li>
+          <li><span class="material-symbols-outlined"> nutrition </span></li>
+          <li><span class="material-symbols-outlined"> nutrition </span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="stock-general-container">
+      <div class="stock-container">
+        <div class="stock-title">
+          <span>Stock</span>
+        </div>
+        <div class="stock-subtract" tabindex="0" role="button" (click)="substrack()">
+          <span class="material-symbols-outlined"> remove </span>
+        </div>
+        <input type="number" class="stock-input" [value]="StockNumber" (input)="onChange($event)" min="0" max="1000" />
+        <div class="stock-add" tabindex="0" role="button" (click)="add()">
+          <span class="material-symbols-outlined"> add </span>
+        </div>
+      </div>
+    </div>
+    <div class="price-general-container">
+      <div class="price-container">
+        <div class="price-title">
+          <span>Price</span>
+        </div>
+        <input type="text" class="price-input" />
+        <div class="dolar-container">
+          <span class="material-symbols-outlined"> attach_money </span>
+        </div>
+      </div>
+    </div>
+    <div class="botton-container">
+      <div class="reset-button"><span>Reset</span></div>
+      <button class="send-button"><span>Create</span></button>
+    </div>
+  </form>
+</div>
+
+<!-- ../../../../assets/img/banana2.jpg -->

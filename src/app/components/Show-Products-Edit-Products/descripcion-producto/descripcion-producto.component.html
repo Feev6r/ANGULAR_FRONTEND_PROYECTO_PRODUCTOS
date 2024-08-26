@@ -1,0 +1,29 @@
+<div class="contenedor-general">
+  <div class="sub-cotenedor">
+    <div class="seccion title">{{ Product?.title }}</div>
+    <div class="seccion image">
+      <img [ngStyle]="imgStyle" [src]="Product?.imageRute" alt="imagen" (load)="IsAlreadyLoaded()" />
+
+      @if (!ImageComplete) {
+      <app-loading-circle></app-loading-circle>
+      }
+
+    </div>
+    <div class="seccion description">
+      <div class="description-title">Description</div>
+      <div class="description-text">
+        {{ Product?.description }}
+      </div>
+    </div>
+    <div class="seccion botton">
+      <div class="date">
+        <div class="date-title">Publication date:</div>
+        <div class="date-text">{{ Product?.date }}</div>
+      </div>
+      @if(Product?.title != null){
+      <div class="buy-button">Buy</div>
+
+      }
+    </div>
+  </div>
+</div>

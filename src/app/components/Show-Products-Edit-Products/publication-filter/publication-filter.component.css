@@ -1,0 +1,122 @@
+.filter-Container{
+    background-color: #343030;
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    color: white;
+    margin-bottom: 5px;
+    /* margin-right: 10px; */
+    /* height: fit-content; */
+
+}
+
+/* FILTER BOXES */
+/* -------------------------- */
+
+.filter-Container > ul{
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 10px;
+    flex: 1;
+}
+
+.filter-Container > ul > li { 
+    margin: 2px;
+}
+
+.filter-Container > ul > li > span {
+    display: inline-block;
+    padding: 20px 15px;
+    cursor: pointer;
+
+    /* background-color: #d1cccc; */
+}
+
+.filter-Container > ul > li:last-child{
+    margin-left: auto;
+}
+
+.filter-Container > ul > li:hover{
+    background-color: #434343a9;
+    user-select: none;
+}
+
+
+
+/* DROPDOWN MENU CATEGORY */
+/* ---------------------------------- */
+
+
+.category{
+    position: relative;
+
+}
+
+.category ul{
+    list-style: none;
+  }
+
+.category ul li span{
+    display: block;
+    padding: 5px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    /* width: 40px; */
+    margin: 5px;
+    /* background-color: #343030; */
+    border-radius: 3px;  
+    z-index: 9999;
+
+  }
+
+.category ul.dropdown li{
+    display: inline-block;
+  }
+  
+.category ul.dropdown{
+    padding: 0px 0px 0px 0px;
+    width: 150px;
+    margin: 0px 0px 0px 0px;
+    /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -5px 5px 10px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.2); */
+    background-color: #434343;
+    position: absolute;
+    right: 0px;
+    border-radius: 3px;
+    /* width: fit-content; */
+    z-index: 9999;
+    display: none;
+  }
+
+
+.category:hover ul.dropdown{
+display: block;
+}
+
+.category ul.dropdown li span:hover{
+    /* box-shadow: inset 0 0 5px rgb(0, 0, 0); */
+    transform: scale(0.95);
+    cursor: pointer;
+
+}
+
+.meat{
+    background-color: #CE4646;
+}
+
+.vegetabol{
+    background-color: #87A922;
+}
+
+.drinks{
+    background-color: #3a698a;
+}
+
+.fruits{
+    background-color: #e37236;
+}
+
+.all{
+    background-color: #666666;
+}

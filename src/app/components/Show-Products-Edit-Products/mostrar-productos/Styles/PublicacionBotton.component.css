@@ -1,0 +1,82 @@
+.contenedor.Abajo{
+    margin: 5px 12px 12px 12px;
+}
+
+.descripcionContenedor{
+    background-color: #666666;
+    display: grid;
+}
+
+
+.descriptioSpan{
+    padding: 10px 10px 10px 10px;
+    font-size: 1.2rem;
+    /* font-size: 1.6vh; */
+}
+
+.descriptionText{
+    padding: 0px 10px 10px 10px;
+    font-size: 2vh;
+}
+
+/* --------------------- */
+
+.interaction{
+    flex: 1;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+
+    margin-left: 30px;
+}
+
+@media screen and (max-width: 980px) {
+    .interaction{
+        margin-left: 10px;
+    }
+} 
+
+/* Buttons */
+.buy{
+    padding: 10px 30px;
+    background-color: #379C4E;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 5px;
+    font-size: 2vh;
+
+    
+}
+
+
+
+.delete{
+    padding: 10px 30px;
+    background-color: #9C3737;
+    cursor: pointer;
+    user-select: none;
+    margin-left: 5px;
+
+}
+
+
+/* Buttons Interaction */
+
+.buy:hover{
+    background-color: #379c4fd7;
+}
+
+.buy:active{
+    transform: scale(0.96);
+}
+
+
+
+.delete:hover{
+    background-color: #9c3737b7;
+}
+
+.delete:active{
+    transform: scale(0.96);
+}
+

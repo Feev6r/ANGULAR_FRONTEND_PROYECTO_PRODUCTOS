@@ -1,0 +1,148 @@
+/* GENERARL CONTAINER */
+
+ .leftContainer{
+    display: flex;
+    justify-content: end;
+
+  }
+  
+ /* MENU */
+ /* ----------------------------- */
+  
+  .menu{
+    margin-right: 10px;
+    position: relative;
+
+    display: flex;
+  }
+
+  .material-symbols-outlined{
+    font-size: 3rem;
+    background-color: #666666;
+    border-radius: 5px;
+
+  }
+
+
+  .menu ul{
+    list-style: none;
+    background-color: rgb(184, 187, 187);
+  }
+  
+  .menu ul li a{
+    display: block;
+    padding: 10px 10px 10px 10px;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    width: 150px;
+    margin: 10px;
+    background-color: #343030;
+    border-radius: 3px;
+    text-decoration: none;
+  
+  }
+  
+  /* ----------------------------------------- */
+  .menu ul.dropdown li{
+    display: block;
+  }
+
+  .menu ul.dropdown li:nth-last-child(-n + 2){
+    display: none;
+  }
+
+  @media screen and (max-width: 600px) {
+    .menu ul.dropdown li:nth-last-child(-n + 2){
+      display: block;
+    }
+  }
+
+  /* ----------------------------------------- */
+
+
+  
+  .menu ul.dropdown{
+    padding: 0px 0px 0px 0px;
+    /* width: 100%; */
+    margin: 70px 0px 0px 0px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -5px 5px 10px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.2);
+    background-color: #3F3F3F;
+    position: absolute;
+    z-index: 9999;
+    right: -20px;
+    border-radius: 3px;
+  }
+
+  
+  .menu ul li a:hover{
+    background-color: #666666;
+  }
+  
+  .menu ul li:hover ul.dropdown{
+    display: block;
+  }
+
+  .material-symbols-outlined:hover{
+    background-color: #ffffff;
+    cursor: pointer;
+    user-select: none;
+  }
+
+
+  /* USER NAME */
+  /* --------------------------------- */
+
+  .user-Name{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+  
+    margin: 0px 30px 0px 30px;
+    color: white;
+    padding: 10px 15px 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    
+  }
+  
+  .user-Name:hover{
+    background-color: #3d3838;
+  }
+  
+  @media screen and (max-width: 730px) {
+    .user-Name{
+      display: none;
+    }
+  }
+  
+
+  /* CART STYLE/NUMBER */
+  /* --------------------------------- */
+
+  .num-cart-container{
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+  
+    color: white;
+  }
+  
+  
+  .num-cart-container > span{
+    font-size: 2.5em;
+    margin-right: 5px;
+  }
+  
+  .num-cart-container:hover{
+    background-color: #3d3838 ;
+  }
+
+
+
+
+

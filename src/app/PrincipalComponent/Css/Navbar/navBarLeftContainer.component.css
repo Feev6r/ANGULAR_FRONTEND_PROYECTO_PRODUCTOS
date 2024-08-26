@@ -1,0 +1,49 @@
+/* CONTENEDOR DE LISTA */
+
+.listaNav{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-left: 10px;
+
+  }
+  
+  @media screen and (max-width: 600px) {
+    .listaNav > li:nth-last-child(-n + 2) a {
+      display: none;
+    }
+
+  } 
+
+/* STILO DE FUENTE Y DE PADDING */
+  /* ----------------------------- */
+
+  .listaNav li{
+    margin: 20px 10px;
+  }
+
+  .listaNav a{
+    color: white;
+    text-decoration: none;
+    padding: 25px 20px;
+
+    border-radius: 10px;
+    font-size: 1.3em;
+  }
+  
+
+/* INTERACCION */
+  /* ----------------------------- */
+
+
+  .listaNav a:hover{
+    background-color: #3d3838;
+    cursor: pointer;
+  }
+  
+  .listaNav li:active{
+    transform: scale(0.98);
+  }
+  
+
+

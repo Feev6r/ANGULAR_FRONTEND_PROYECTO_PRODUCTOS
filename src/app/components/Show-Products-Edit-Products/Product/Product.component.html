@@ -1,0 +1,23 @@
+<div class="general">
+  <main>
+    <app-publication-filter (FilterEmiter_Product)="GetInfoProducts($event)"
+      (Shange)="setDescription($event)"></app-publication-filter>
+    @for (item of Products; track item.idProduct; let i = $index) {
+    <app-mostrar-productos [Products]="item" [index]="i"
+      (PublicationIndex)="setDescription($event)"></app-mostrar-productos>
+    }
+  </main>
+  <aside>
+    @if(ActualProduct.title != null){
+    <app-descripcion-producto [Product]="ActualProduct"></app-descripcion-producto>
+    } @else {
+    <app-loading-circle></app-loading-circle>
+
+    <!-- DEBUGG STUFF -->
+    } @if(debugMode){
+    <button (click)="login()">Log in</button>
+    <button (click)="test()">TestSomeMethod</button>
+    }
+    <!--  -->
+  </aside>
+</div>

@@ -1,0 +1,37 @@
+nav{
+    background-color: #3F3F3F;
+    /* height: 12vh; */
+    display: flex;    
+    align-items: center;
+    border-radius: 8px;
+    margin-bottom: 10px;
+
+    min-width: 576px;
+  
+  }
+  
+  @media screen and (max-width: 500px) {
+    nav{
+    min-width: 370px;
+    }
+  } 
+
+/* ----------------------------------------- */
+
+.subNavBar{
+      background-color: #343030;
+      /* height: 80%; */
+      /* width: 100%; */
+      margin: 10px 10px;
+      border-radius: 12px;
+  
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex: 1;
+
+    
+
+  }
+  
+  

@@ -1,0 +1,36 @@
+<div class="contenedorProducto" role="button" tabindex="0" (click)="obtener()">
+  <div class="contenedor Arriba">
+    <div class="titulo">
+      <span>{{ Products?.title }}</span>
+    </div>
+    <div class="categoria">
+      @switch (Products?.category) { @case ("Vegetables") {
+      <span class="material-symbols-outlined vegetabol"> icecream </span>
+      } @case ("Fruits") {
+      <span class="material-symbols-outlined fruits"> nutrition </span>
+      } }
+    </div>
+    <div class="informacion">
+      <span>Stock</span>
+      <div class="stock">{{ Products?.stock }}</div>
+      <span>Price</span>
+      <div class="price">{{ Products?.price }}$</div>
+    </div>
+  </div>
+  <div class="contenedor Abajo">
+    <div class="descripcionContenedor">
+      <span class="descriptioSpan">Description</span>
+      <div class="descriptionText">
+        <span>{{ Products?.description }}</span>
+      </div>
+    </div>
+    <div class="interaction">
+      <div class="buy" role="button" tabindex="0" (click)="obtener()">Buy</div>
+      @if(canDelete){
+      <div class="delete" role="button" tabIndex="0" (click)="delete()">
+        Delete
+      </div>
+      }
+    </div>
+  </div>
+</div>

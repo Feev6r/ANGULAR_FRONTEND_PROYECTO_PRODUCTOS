@@ -1,0 +1,68 @@
+.general{
+    /* background-color: rgb(221, 221, 221); */
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+main{
+    background-color: #A79277;
+    height: 900px;
+    /* height: 90vh; */
+    margin-right: 5px;
+    /* margin-left: 5px; */
+    flex: 1.8;
+    
+    border-radius: 8px;
+    /* min-width: 370px; */
+    min-width: 576px;
+
+    display: grid;
+    align-content: start;
+    overflow-y: scroll;
+    overflow-x: auto;
+
+}
+
+main::-webkit-scrollbar {display: none;}
+
+aside{
+    background-color: #343030;
+    max-height: 1000px;
+    /* ojito con el min height */
+    /* min-height: 1000px;  */
+    position: relative;
+    /* height: 900px; */
+    /* margin-left: 5px; */
+    margin-right: 5px;
+    flex: 1;
+    
+    /* min-width: 576px; */
+    min-width: 576px;
+    /* border-radius: 8px; */
+
+}
+
+aside > .a{
+    color: white;
+}
+
+aside > app-loading-circle{
+    position: absolute;
+    right: 50%;
+    top: 50%;
+}
+
+
+@media screen and (max-width: 500px) {
+    main{
+    min-width: 370px;
+    margin-right: 0px;
+    }
+    aside{
+    min-width: 370px;
+    margin-right: 0px;
+    }
+} 
+
+  

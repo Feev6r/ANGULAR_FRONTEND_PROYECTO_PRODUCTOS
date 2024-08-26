@@ -1,0 +1,80 @@
+<div class="general">
+  <div class="contenedorFormulario">
+    <form class="formulario" [formGroup]="myForm" (ngSubmit)="EnviarRegistro()">
+      <div class="form uno">
+        <span>Sing Up</span>
+      </div>
+      <div class="form dos">
+        <span>Name</span>
+        <input
+          type="text"
+          placeholder="Name"
+          formControlName="name"
+          (click)="clicko()"
+        />
+      </div>
+      <div class="form tres">
+        <span>Email</span>
+        <input
+          type="text"
+          placeholder="Email"
+          formControlName="email"
+          (click)="clicko()"
+        />
+      </div>
+      <div class="form cuatro">
+        <span>Password</span>
+        <input
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+          (click)="clicko()"
+        />
+      </div>
+      <div class="form cinco">
+        <span>Password (Confirm)</span>
+        <input
+          type="password"
+          placeholder="Password"
+          formControlName="confirmPassword"
+          (click)="clicko()"
+        />
+      </div>
+      <div class="form seis">
+        <div class="mensajeError">
+          <!-- @if(!myForm.get('name').touched && !myForm.get('email').touched &&
+          !myForm.get('password').touched){ {{ errorMessage }}} -->
+
+          {{ errorMessage }}
+          @if(myForm.get('name').hasError('required') &&
+          myForm.get('name').touched) { - Name is obligatory } @else if
+          (myForm.get('name').hasError('minlength')){ - Name must have at least
+          5 characters }
+
+          <br />
+
+          @if(myForm.get('email').hasError('required') &&
+          myForm.get('name').touched) { - Email is obligatory } @else if
+          (myForm.get('email').hasError('email')) { - Invalid email }
+
+          <br />
+
+          @if(myForm.get('password').hasError('required') &&
+          myForm.get('password').touched) { - Password is obligatory } @else if
+          (myForm.get('password').hasError('minlength')){ - Password must have
+          at least 8 characters }
+
+          <br />
+
+          @if(myForm.hasError('passwordsNotMatch') &&
+          myForm.get('password').touched){ - Passwords do not match }
+        </div>
+        @if(myForm.valid ){
+        <button class="Done" type="submit">Done</button>
+        } @else {
+        <button class="Done-Uncliqueable" type="submit">Done</button>
+        }
+      </div>
+    </form>
+  </div>
+</div>

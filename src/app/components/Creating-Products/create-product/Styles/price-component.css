@@ -1,0 +1,31 @@
+.price-general-container{
+    margin: 20px 0px 0px 20px;
+}
+
+.price-container{
+display: flex;
+}
+
+.price-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #575757;
+    font-size: 1.2em;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.price-input{
+    outline: none;
+    width: 21%;
+}
+
+.dolar-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: #575757;
+    border-radius: 0px 5px 5px 0px;
+}

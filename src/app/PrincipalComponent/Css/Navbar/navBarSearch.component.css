@@ -1,0 +1,44 @@
+.search-Container{
+    background-color: #666666;
+    border-radius: 15px;
+    display: flex;
+    color: white;
+}
+
+.search{
+    margin: 5px;
+    width: fit-content;
+    font-size: 1.4em;
+    width: 350px;
+
+    background-color: #666666;
+    outline: none; 
+    border: none;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+
+
+.search-Button{
+
+    justify-items: center;
+    align-items: center;
+
+    border-radius: 0px 15px 15px 0px;
+    padding: 0px 10px;
+
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    background-color: #575757;
+
+}
+
+.search-Button:hover{
+    background-color:  #575757c3;
+    cursor: pointer;
+}
+
+
+/* en cierto width de la pantalla quitar el search */

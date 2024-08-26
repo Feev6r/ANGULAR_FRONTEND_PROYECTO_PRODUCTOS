@@ -1,0 +1,87 @@
+.contenedorProducto{
+    background-color: #343030;
+    margin: 5px 10px 5px 10px;
+    
+    display: grid;
+    color: white;
+    cursor: pointer;
+}
+
+
+.contenedorProducto:hover{
+    border: 2px solid;
+    border-color: #6a6a6a;
+}
+
+.contenedor{
+    display: flex;
+}
+
+.contenedor.Arriba{
+    margin: 12px 12px 5px 12px;
+}
+
+.titulo{
+    background-color: #666666;
+    padding: 5px;
+    margin-right: 5px;
+    /* font-size: 1.4rem; */
+    font-size: 2.2vh;
+
+    display: flex;
+    align-items: center;
+}
+
+.categoria .vegetabol{
+    background-color: #666666;
+    padding: 5px;
+    margin-right: 5px;
+    font-size: 2rem;
+
+    background-color: #87A922;
+    
+    display: flex;
+    align-items: center;
+}
+.categoria .fruits{
+    background-color: #666666;
+    padding: 5px;
+    margin-right: 5px;
+    /* font-size: 2rem; */
+    font-size: 2.2vh;
+
+    background-color: #e37236;
+    
+    display: flex;
+    align-items: center;
+}
+
+.informacion{
+    flex: 1;
+    /* font-size: 1.4rem; */
+    font-size: 2.2vh;
+    padding: 5px;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+}
+
+
+.stock{
+    background-color: #CE8746;
+    padding: 5px 15px;
+    margin: 0px 12px;
+
+    text-align: center;
+
+}
+
+.price{
+    background-color: #C0A43F;
+    padding: 5px 15px ;
+    margin: 0px 0px 0px 12px;
+
+}
+
