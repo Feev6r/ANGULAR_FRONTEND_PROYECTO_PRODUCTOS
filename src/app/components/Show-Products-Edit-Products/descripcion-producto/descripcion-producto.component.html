@@ -2,7 +2,7 @@
   <div class="sub-cotenedor">
     <div class="seccion title">{{ Product?.title }}</div>
     <div class="seccion image">
-      <img [ngStyle]="imgStyle" [src]="Product?.imageRute" alt="imagen" (load)="IsAlreadyLoaded()" />
+      <img [ngStyle]="imgStyle" [src]="initialPath + Product?.imageRute" alt="imagen" (load)="IsAlreadyLoaded()" />
 
       @if (!ImageComplete) {
       <app-loading-circle></app-loading-circle>
@@ -20,9 +20,11 @@
         <div class="date-title">Publication date:</div>
         <div class="date-text">{{ Product?.date }}</div>
       </div>
-      @if(Product?.title != null){
+      @if(Product?.title == null || !canBuy){
+      <div class="buy-button-wrong">Buy</div>
+      }
+      @else{
       <div class="buy-button">Buy</div>
-
       }
     </div>
   </div>

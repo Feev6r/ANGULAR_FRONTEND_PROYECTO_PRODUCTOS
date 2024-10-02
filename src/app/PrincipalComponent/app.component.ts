@@ -9,6 +9,7 @@ import { LogInComponent } from '../components/Auth/LogIn/LogIn.component';
 import { DescripcionProductoComponent } from '../components/Show-Products-Edit-Products/descripcion-producto/descripcion-producto.component';
 import { ShowProductComponent } from '../components/Show-Products-Edit-Products/mostrar-productos/Show-Product.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -42,13 +43,14 @@ export class AppComponent implements OnInit {
     private cookie: CookieService,
     private authService: AuthServiceService,
     private _route: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (this.cookie.check('UserSession')) {
-      //console.log("esta la cookie disponible");
+      // console.log("esta la cookie disponible");
 
       this.userService.getUserInformation().subscribe((User) => {
+        localStorage['userName'] = User.name
         this.UserName = User.name;
         this.isLoggin = true;
       });
@@ -63,6 +65,7 @@ export class AppComponent implements OnInit {
     this.authService.LoggoutService().subscribe({
       complete: () => {
         localStorage.removeItem('CSRF-TOKEN');
+        localStorage.removeItem('userName');
         location.reload();
       },
     });

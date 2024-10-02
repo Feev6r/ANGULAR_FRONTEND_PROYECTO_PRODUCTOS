@@ -12,7 +12,7 @@ import { ShowProductComponent } from '../mostrar-productos/Show-Product.componen
 import {
   PublicationFilterComponent,
   FilterProducts,
-} from '../publication-filter/publication-filter.component';
+} from '../../publication-filter/publication-filter.component';
 
 @Component({
   selector: 'app-publicaciones',
@@ -47,15 +47,15 @@ export class ProductComponent implements OnInit {
     private _producstService: ProductsService,
     private _producstReqService: ProductsReqService,
     private _authService: AuthServiceService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   async GetInfoProducts(filter: FilterProducts) {
     let info = await this._producstService.GetProducts(filter);
 
     this.Products = info.Products;
-    this.ActualProduct = info.ActualProduct;
+    this.ActualProduct = info.ActualProduct ?? {};
   }
 
   setDescription(index: number) {
@@ -65,15 +65,19 @@ export class ProductComponent implements OnInit {
   //#region debugMethods
   login() {
     this._authService.LogginService(this.userPredt).subscribe((token) => {
-      //localStorage.setItem('CSRF_TOKEN', token.body);
-      console.log(token);
+      // this._authService.TokenCsrf().subscribe(x => {
+      //   location.reload();
+      // })
       location.reload();
     });
+
+
+
   }
 
   test() {
     this._producstReqService.testService().subscribe((data) => {
-      console.log(data.body);
+      console.log(data);
     });
   }
 

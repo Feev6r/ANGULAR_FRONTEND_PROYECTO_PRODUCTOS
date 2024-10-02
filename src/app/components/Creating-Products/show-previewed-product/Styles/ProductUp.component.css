@@ -5,12 +5,18 @@
     display: grid;
     color: white;
     cursor: pointer;
+    border: solid rgb(131, 114, 92) 5px;
+
 }
 
 
 .contenedorProducto:hover{
     border: 2px solid;
     border-color: #6a6a6a;
+}
+.contenedorProducto:active{
+    transform: scale(0.99);
+
 }
 
 .contenedor{
@@ -30,8 +36,8 @@
     display: flex;
     align-items: center;
 }
-
-.categoria .vegetabol{
+/* 
+.categoria .vegetable {
     background-color: #666666;
     padding: 5px;
     margin-right: 5px;
@@ -41,14 +47,14 @@
     
     display: flex;
     align-items: center;
-}
-.categoria .fruits{
-    background-color: #666666;
+} */
+.categoria .material-symbols-outlined{
+    /* background-color: #666666; */
     padding: 5px;
     margin-right: 5px;
     font-size: 2rem;
 
-    background-color: #e37236;
+    /* background-color: #e37236; */
     
     display: flex;
     align-items: center;

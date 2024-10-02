@@ -1,0 +1,25 @@
+.description-container{
+    /* margin: 0px 20px; */
+    margin-right: 20px;
+    font-size: 1.4em;
+    flex: 1;
+}
+
+.description-general-container{
+
+    margin: 10px 20px;
+    display: flex;
+    height: fit-content;
+}
+
+
+.description-title{
+    margin-bottom: 10px;
+    background-color: #666666;
+    padding: 10px;
+    /* display: block; */
+    width: fit-content;
+    border-radius: 5px;
+
+}
+

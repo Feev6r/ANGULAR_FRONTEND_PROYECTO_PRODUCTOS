@@ -1,0 +1,63 @@
+/* --------INPUT-IMAGE-------- */
+
+.image-category-container{
+
+    display: flex;
+    /* background-color: aqua; */
+    /* max-width: 289.7px; */
+    /* max-width: 500px; */
+    /* width: 100%; */
+
+}
+
+.image-container{
+    /* background-color: #575757; */
+    /* padding: 10px 0px; */
+    height: fit-content;
+    width: 40%;
+    margin: 0px 20px 0px 20px;
+    /* display: flex; */
+
+ 
+}
+
+.image-container > label{
+    cursor: pointer;
+    display: flex;
+    width: 100%;
+    padding: 10px 0px;
+    font-size: 1.4em;
+    border-radius: 5px 5px 0px 0px;
+    justify-content: center;
+    background-color: #666666;
+
+}
+
+
+.image-container > label:hover{
+    background-color: #666666d5;
+  
+
+}
+
+.image-preview{
+
+    height: 245px;
+    border-radius: 0px 0px 5px 5px;
+
+    background-color: #575757;
+    /* width: 289.7px; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 10px; */
+}
+
+.sub-image-preview{
+    background-color: rgb(255, 255, 255);
+    height: 90%;
+    width: 90%;
+    border-radius: 5px;
+    /* margin: 5px; */
+}

@@ -1,5 +1,6 @@
 .form input{ 
-    width: 420px;
+  width: 25vw;
+  min-width: 300px;
     height: 25px;
     border-radius: 2px;
     border: none;

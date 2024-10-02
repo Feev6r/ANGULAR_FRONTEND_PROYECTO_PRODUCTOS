@@ -4,7 +4,7 @@ import { ProductsReqService } from './ReqRepository/productsReq.service';
 import { Product_Reading } from '../Models/Product_Reading.component';
 import { lastValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
-import { FilterProducts } from '../components/Show-Products-Edit-Products/publication-filter/publication-filter.component';
+import { FilterProducts } from '../components/publication-filter/publication-filter.component';
 
 @Injectable({
   providedIn: 'root',
@@ -60,3 +60,5 @@ export class ProductsService {
 
   }
 }
+
+export { FilterProducts };

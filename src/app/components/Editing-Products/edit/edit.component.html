@@ -1,0 +1,15 @@
+<div class="general-container">
+  <main>
+    <app-publication-filter (FilterEmiter_Product)="GetInfoProducts($event)"></app-publication-filter>
+
+    @for (item of Products; track item.idProduct; let i = $index) {
+
+    <app-mostrar-productos (ActualProductToEdit)="getProductToEdit($event)" [Products]="item"
+      [index]="i"></app-mostrar-productos>
+
+    }
+  </main>
+  <aside [class.wrong]="productToEdit.title === ''">
+    <app-edit-product [productToEdit]="productToEdit"></app-edit-product>
+  </aside>
+</div>

@@ -11,12 +11,13 @@ export interface FilterProducts {
   standalone: true,
   imports: [CommonModule],
   templateUrl: './publication-filter.component.html',
-  styleUrl: './publication-filter.component.css',
+  styleUrls: ['./publication-filter.component.css',
+    '../../shared/category_colors.component.css'],
 })
 export class PublicationFilterComponent implements OnInit {
 
   @Output() FilterEmiter_Product: EventEmitter<FilterProducts> = new EventEmitter<FilterProducts>();
-  @Output() Shange: EventEmitter<number> = new EventEmitter<number>();
+  @Output() Change: EventEmitter<number> = new EventEmitter<number>();
 
   PressCategory: boolean = false;
 
@@ -83,35 +84,41 @@ export class PublicationFilterComponent implements OnInit {
       case 0:
         this.filter.categoryFilter = 'All';
         this.FilterEmiter_Product.emit(this.filter);
-        this.Shange.emit(0);
+        this.Change.emit(0);
         break;
 
       //Vegetables
       case 1:
         this.filter.categoryFilter = 'Vegetables';
         this.FilterEmiter_Product.emit(this.filter);
-        this.Shange.emit(0);
+        this.Change.emit(0);
         break;
 
       //Fruits
       case 2:
         this.filter.categoryFilter = 'Fruits';
         this.FilterEmiter_Product.emit(this.filter);
-        this.Shange.emit(0);
+        this.Change.emit(0);
         break;
 
       //Meat
       case 3:
-        this.filter.categoryFilter = 'All';
+        this.filter.categoryFilter = 'Meats';
         this.FilterEmiter_Product.emit(this.filter);
-        this.Shange.emit(0);
+        this.Change.emit(0);
+        break;
+
+      case 4:
+        this.filter.categoryFilter = 'Drinks';
+        this.FilterEmiter_Product.emit(this.filter);
+        this.Change.emit(0);
         break;
 
       //ALL or WrongInput
       default:
         this.filter.categoryFilter = 'All';
         this.FilterEmiter_Product.emit(this.filter);
-        this.Shange.emit(0);
+        this.Change.emit(0);
     }
   }
 

@@ -1,16 +1,19 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BlobContentModel, ProductObj } from '../../../Models/Product_Reading.component';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ProductObj } from '../../../Models/Product_Reading.component';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductsReqService } from '../../../Services/ReqRepository/productsReq.service';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
 @Component({
-  selector: 'app-create-product',
+  selector: 'app-edit-product',
   standalone: true,
-  imports: [[CommonModule], [FormsModule], [ReactiveFormsModule]],
-  templateUrl: './create-product.component.html',
+  imports: [[FormsModule], [ReactiveFormsModule], [CommonModule], [ToastrModule]],
+  templateUrl: './edit-product.component.html',
   styleUrls: [
     './Styles/create-product.component.css',
     './Styles/input-form.component.css',
@@ -24,13 +27,10 @@ import { ProductsReqService } from '../../../Services/ReqRepository/productsReq.
     '../../../shared/category_colors.component.css'
   ],
 })
+export class EditProductComponent implements OnChanges {
 
 
-
-export class CreateProductComponent {
-
-
-  @Output() previewObj = new EventEmitter<ProductObj>();
+  @Input() productToEdit: ProductObj = new ProductObj();
 
   imageUrl: string | ArrayBuffer | null = null;
   FormData: FormData = new FormData();
@@ -43,41 +43,68 @@ export class CreateProductComponent {
   titleClass = "title-creation-input";
   descriptionClass = "description-input";
 
-  constructor(private _productService: ProductsReqService) {
+  initialPath: string = "https://res.cloudinary.com/dpgknohvo/"
+
+  constructor(private _productService: ProductsReqService, private router: Router, private toastr: ToastrService) {
 
     this.myForm = new FormGroup({
-      title: new FormControl('', [Validators.required, Validators.maxLength(36)]),
-      description: new FormControl('', [Validators.required, Validators.maxLength(1000)]),
-      stock: new FormControl(''),
-      price: new FormControl(''),
-      image: new FormControl([], [Validators.required, Validators.nullValidator])
-
+      title: new FormControl(this.productToEdit.title, [Validators.required, Validators.maxLength(36)]),
+      description: new FormControl(this.productToEdit.description, [Validators.required, Validators.maxLength(1000)]),
+      stock: new FormControl(this.productToEdit.stock),
+      price: new FormControl(this.productToEdit.price),
     });
+
+    this.myForm.setValue({
+      title: this.productToEdit.title,
+      description: this.productToEdit.description,
+      stock: this.productToEdit.stock,
+      price: this.productToEdit.price,
+    });
+
+
+  }
+
+  // canDeactivate(): CanDeactivateType {
+
+  //   const deactivateSubject = new Subject<boolean>();
+  // }
+
+  // showSuccess() {
+  //   this.toastr.success('Message successfully sent!', 'Success');
+  // }
+
+  ngOnChanges(changes: SimpleChanges): void {
+
+    if (changes['productToEdit']) {
+      this.myForm.setValue({
+        title: this.productToEdit.title,
+        description: this.productToEdit.description,
+        stock: this.productToEdit.stock,
+        price: this.productToEdit.price,
+        // image: this.productToEdit.file
+      });
+    }
   }
 
 
   onSubmit() {
-    this.myForm.value.stock = this.product.stock;
-    this.myForm.value.category = this.product.category;
-
-
     this.FormData.append('title', this.myForm.value.title);
     this.FormData.append('description', this.myForm.value.description);
-    this.FormData.append('idCategory', String(this.myForm.value.category));
+    this.FormData.append('idCategory', String(this.productToEdit.category));
     this.FormData.append('stock', String(this.myForm.value.stock));
     this.FormData.append('price', String(this.myForm.value.price));
 
-    this._productService.CreateProducts(this.FormData).subscribe(x => {
-
-    })
-
-    // location.reload();
+    if (this.productToEdit.productId) {
+      this._productService.Edit(this.FormData, this.productToEdit.productId).subscribe(x => {
+        location.reload();
+      })
+    }
 
   }
 
+
+
   onFileSelected(event: any) {
-
-
     const file: File = event.target.files[0];
     if (file) {
 
@@ -87,7 +114,6 @@ export class CreateProductComponent {
       reader.onload = () => {
         this.imageUrl = reader.result;
       };
-
 
       this.convertFileToBlob(file);
 
@@ -114,17 +140,22 @@ export class CreateProductComponent {
 
   substrack() {
 
-    if (this.product.stock > 0) {
-      this.product.stock--;
-      this.previewObj.emit(this.product);
+    if (this.productToEdit.stock > 0) {
+      this.productToEdit.stock--;
+      this.myForm.patchValue({ stock: this.productToEdit.stock })
     }
+
+    this.toastr.info("hola", "Saludo")
+
   }
 
   add() {
-    if (this.product.stock < 10000) {
-      this.product.stock++;
-      this.previewObj.emit(this.product);
+    if (this.productToEdit.stock < 10000) {
+      this.productToEdit.stock++;
+      this.myForm.patchValue({ stock: this.productToEdit.stock })
     }
+
+    console.log(this.myForm.value.stock)
   }
 
   onStockChange(event: any) {
@@ -133,7 +164,7 @@ export class CreateProductComponent {
     else if (event.target.value > 10000) this.product.stock = 0;
     else this.product.stock = event.target.value;
 
-    if (this.product.stock != 0) this.previewObj.emit(this.product);
+
   }
 
   onTitleChange(event: any) {
@@ -143,7 +174,7 @@ export class CreateProductComponent {
 
 
     this.product.title = event.target.value;
-    this.previewObj.emit(this.product);
+
   }
 
   onDescriptionChange(event: any) {
@@ -152,13 +183,13 @@ export class CreateProductComponent {
     else this.descriptionClass = "description-input"
 
     this.product.description = event.target.value;
-    this.previewObj.emit(this.product);
+
   }
 
   onPriceChange(event: any) {
 
     this.product.price = event.target.value;
-    this.previewObj.emit(this.product);
+
   }
 
   onSomethingChange() {
@@ -166,23 +197,17 @@ export class CreateProductComponent {
   }
 
   category(categoryNumber: number) {
-    this.product.category = categoryNumber;
-    this.previewObj.emit(this.product);
+    this.productToEdit.category = categoryNumber;
   }
 
 
-  reset() {
-    this.product = new ProductObj();
-    this.FormData = new FormData();
-    this.imageUrl = null;
-    this.previewObj.emit(this.product);
+  delete() {
+    // this._productService.Delete(this.productToEdit.productId!).subscribe(x =>{
+    //   location.reload();
+    // })
   }
 
 }
 
 
-// console.log(`Title: ${this.myForm.value.title}`);
-// console.log(`Description: ${this.myForm.value.description}`);
-// console.log(`Stock: ${this.myForm.value.stock}`);
-// console.log(`Price: ${this.myForm.value.price}`);
-// console.log(`Category: ${this.myForm.value.category}`);
+

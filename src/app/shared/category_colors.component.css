@@ -1,0 +1,28 @@
+.material-symbols-outlined{
+    user-select: none;
+}
+
+.meat{
+    background-color: #CE4646;
+}
+
+.vegetable{
+    background-color: #87A922;
+}
+
+.drinks{
+    background-color: #3a698a;
+}
+
+.fruits{
+    background-color: #e37236;
+}
+
+.all{
+    background-color: #666666;
+}
+
+.selected{
+    border: solid 3px #ffffff;
+    /* border:  inset 4px #ffffff; */
+}

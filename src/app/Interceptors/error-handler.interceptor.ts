@@ -1,8 +1,9 @@
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { catchError, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { catchError, throwError } from 'rxjs';
+
 
 //atrapamos los errores en respuesta a una solicitud basicamente
 export const errorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
@@ -24,9 +25,11 @@ export const errorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
 
         //si existe se pone en 0 para poder hacer login
         if (cookie.check("UserSession")) {
-          cookie.set("UserSession", "0", undefined, undefined, undefined, true, "None");
+
+          cookie.set("UserSession", "0");
         }
         router.navigate(['login'])
+
 
       }
       errorMessage = `${error.error.message}`;

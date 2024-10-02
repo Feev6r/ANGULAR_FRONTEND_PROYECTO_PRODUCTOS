@@ -10,10 +10,15 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   if (cookie.check('UserSession')) {
 
-    if (cookie.get('UserSession') === "1") {
-      router.navigate(['']);
+    if (cookie.get('UserSession') === "0") {
+      router.navigate(['/login']);
       return false;
     }
+
+  }
+  else {
+    router.navigate(['/login']);
+    return false;
   }
 
   return true

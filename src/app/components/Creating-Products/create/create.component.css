@@ -36,3 +36,14 @@ aside{
     /* border-radius: 8px; */
 
 }
+
+@media screen and (max-width: 500px) {
+    main{
+    min-width: 370px;
+    margin-right: 0px;
+    }
+    aside{
+    min-width: 370px;
+    margin-right: 0px;
+    }
+} 

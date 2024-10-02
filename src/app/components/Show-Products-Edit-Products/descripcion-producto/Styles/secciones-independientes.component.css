@@ -138,6 +138,18 @@
     cursor: pointer;
     user-select: none;
 }
+.seccion.botton > .buy-button-wrong{
+    padding: 10px 35px;
+
+    background-color: #379C4E;
+    opacity: 0.5;
+    
+    border-radius: 3px;
+    align-self: flex-end;
+    margin-left: auto;
+    cursor: not-allowed;
+    user-select: none;
+}
 
 .seccion.botton > .buy-button:hover{
     background-color: #379c4fd7;

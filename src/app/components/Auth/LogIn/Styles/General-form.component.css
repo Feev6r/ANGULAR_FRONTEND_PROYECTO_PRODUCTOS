@@ -1,6 +1,7 @@
 .general-Container{
     background-color: #EDEDED;
     height: 750px;
+    min-width: 370px;
     display: flex;
     justify-content: center;
     align-items: center;

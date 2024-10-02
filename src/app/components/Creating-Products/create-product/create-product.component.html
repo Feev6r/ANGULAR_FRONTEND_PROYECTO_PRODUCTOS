@@ -1,5 +1,5 @@
 <div class="general-container">
-  <form class="sub-general-container">
+  <form class="sub-general-container" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <div class="title-container">
       <div class="title">
         <span>Product creation</span>
@@ -9,21 +9,23 @@
       <div class="title-creation">
         <span>Title</span>
       </div>
-      <input type="text" class="title-creation-input" placeholder="Enter the title..." />
+      <input type="text" [ngClass]="titleClass" placeholder="Enter the title..." (input)="onTitleChange($event)"
+        name="title" formControlName="title" />
     </div>
     <div class="description-general-container">
       <div class="description-container">
         <div class="description-title">
           <span>Description</span>
         </div>
-        <textarea name="" id="" cols="50" rows="4" class="description-input"
-          placeholder="Enter the description..."></textarea>
+        <textarea name="" id="" cols="50" rows="4" [ngClass]="descriptionClass" placeholder="Enter the description..."
+          (input)="onDescriptionChange($event)" name="description" formControlName="description"></textarea>
       </div>
     </div>
     <div class="image-category-container">
       <div class="image-container">
         <label for="image"><span>Select Image</span></label>
-        <input type="file" name="image" id="image" (change)="onFileSelected($event)" accept="image/*" />
+        <input type="file" name="image" id="image" (change)="onFileSelected($event)" accept="image/*"
+          formControlName="image">
         <div class="image-preview">
           @if(imageUrl){
           <img class="sub-image-preview" [src]="imageUrl" alt="a" />
@@ -40,14 +42,14 @@
           </div>
         </div>
         <ul class="category-container">
-          <li><span class="material-symbols-outlined"> nutrition </span></li>
-          <li><span class="material-symbols-outlined"> nutrition </span></li>
-          <li><span class="material-symbols-outlined"> nutrition </span></li>
-          <li><span class="material-symbols-outlined"> nutrition </span></li>
-          <li><span class="material-symbols-outlined"> nutrition </span></li>
-          <li><span class="material-symbols-outlined"> nutrition </span></li>
-          <li><span class="material-symbols-outlined"> nutrition </span></li>
-          <li><span class="material-symbols-outlined"> nutrition </span></li>
+          <li><span class="material-symbols-outlined fruits" [class.selected]="product.category === 4"
+              (click)="category(4)"> nutrition </span></li>
+          <li><span class="material-symbols-outlined vegetable" [class.selected]="product.category === 3"
+              (click)="category(3)"> icecream </span></li>
+          <li><span class="material-symbols-outlined meat" [class.selected]="product.category === 5"
+              (click)="category(5)"> egg_alt </span></li>
+          <li><span class="material-symbols-outlined drinks" [class.selected]="product.category === 6"
+              (click)="category(6)"> local_bar </span></li>
         </ul>
       </div>
     </div>
@@ -59,7 +61,8 @@
         <div class="stock-subtract" tabindex="0" role="button" (click)="substrack()">
           <span class="material-symbols-outlined"> remove </span>
         </div>
-        <input type="number" class="stock-input" [value]="StockNumber" (input)="onChange($event)" min="0" max="1000" />
+        <input type="number" class="stock-input" [value]="product.stock" (input)="onStockChange($event)" min="0"
+          max="1000" formControlName="stock" />
         <div class="stock-add" tabindex="0" role="button" (click)="add()">
           <span class="material-symbols-outlined"> add </span>
         </div>
@@ -70,17 +73,25 @@
         <div class="price-title">
           <span>Price</span>
         </div>
-        <input type="text" class="price-input" />
+        <input type="number" class="price-input" (input)="onPriceChange($event)" name="price" formControlName="price"
+          min="0" max="1000" />
         <div class="dolar-container">
           <span class="material-symbols-outlined"> attach_money </span>
         </div>
       </div>
     </div>
     <div class="botton-container">
-      <div class="reset-button"><span>Reset</span></div>
-      <button class="send-button"><span>Create</span></button>
+      <button class="reset-button" type="reset" (click)="reset()"><span>Reset</span></button>
+      @if(myForm.valid){
+      <button class="send-button" type="submit"><span>Create</span></button>
+      }
+      @else{
+      <button class="send-button unable" type="submit"><span>Create</span></button>
+      }
     </div>
   </form>
 </div>
 
 <!-- ../../../../assets/img/banana2.jpg -->
+<!--  -->
+<!-- -->

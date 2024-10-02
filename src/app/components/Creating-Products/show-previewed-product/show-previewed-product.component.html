@@ -1,7 +1,7 @@
 <div class="contenedorProducto" role="button" tabindex="0">
   <div class="contenedor Arriba">
     <div class="titulo">
-      <span>TITLE</span>
+      <span>{{prev?.title}}</span>
     </div>
     <div class="categoria">
       <!-- @switch (Products?.category) { @case ("Vegetables") {
@@ -9,25 +9,20 @@
         } @case ("Fruits") {
         <span class="material-symbols-outlined fruits"> nutrition </span>
         } } -->
-      <span class="material-symbols-outlined fruits"> nutrition </span>
+      <span [ngClass]="categorySelector(prev?.category!).class"> {{categorySelector(prev?.category!).type}} </span>
     </div>
     <div class="informacion">
       <span>Stock</span>
-      <div class="stock">0</div>
+      <div class="stock">{{prev?.stock}}</div>
       <span>Price</span>
-      <div class="price">0$</div>
+      <div class="price">{{prev?.price + "$"}}</div>
     </div>
   </div>
   <div class="contenedor Abajo">
     <div class="descripcionContenedor">
       <span class="descriptioSpan">Description</span>
       <div class="descriptionText">
-        <span
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-          quibusdam id similique consequatur error accusantium soluta magni
-          saepe quia tenetur esse in corporis, sint quae delectus. Reiciendis
-          impedit non eaque.</span
-        >
+        <span>{{prev?.description}}</span>
       </div>
     </div>
     <div class="interaction">

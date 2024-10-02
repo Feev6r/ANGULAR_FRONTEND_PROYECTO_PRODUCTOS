@@ -22,23 +22,16 @@ export const headerManipulatorInterceptor: HttpInterceptorFn = (req, next) => {
     }))
   }
 
-  // if(req.url.includes("Show/Test"))
-  // {
+
 
   const modifiedRequest = req.clone({
     setHeaders: {
-      'Content-Type': 'application/json',
+      //'Content-Type': 'application/json',
       'X-CSRF-TOKEN': localStorage.getItem('CSRF-TOKEN') !== null ? localStorage.getItem('CSRF-TOKEN')! : ""
     }
   });
 
   return ReturnRequestWithHeaders(modifiedRequest);
-
-  // }
-  // else
-  // {
-  //   return ReturnRequestWithHeaders(req);
-  // }
 
 };
 

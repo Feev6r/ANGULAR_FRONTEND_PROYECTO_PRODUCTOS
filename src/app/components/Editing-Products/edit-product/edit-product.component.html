@@ -1,0 +1,101 @@
+<div class="general-container">
+    @if(!productToEdit) {
+    <div>
+        <span>¡Select a product to edit!</span>
+    </div>
+    }
+    <form class="sub-general-container" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="title-container">
+            <div class="title">
+                <span>Product editor</span>
+            </div>
+        </div>
+        <div class="title-creation-container">
+            <div class="title-creation">
+                <span>Title</span>
+            </div>
+            <input type="text" [ngClass]="titleClass" placeholder="Enter the title..." [value]="productToEdit.title"
+                (input)="onTitleChange($event)" name="title" formControlName="title" />
+        </div>
+        <div class="description-general-container">
+            <div class="description-container">
+                <div class="description-title">
+                    <span>Description</span>
+                </div>
+                <textarea name="" id="" cols="50" rows="4" [ngClass]="descriptionClass"
+                    placeholder="Enter the description..." [value]="productToEdit.description"
+                    (input)="onDescriptionChange($event)" name="description" formControlName="description"></textarea>
+            </div>
+        </div>
+        <div class="image-category-container">
+            <div class="image-container">
+                <label for="image"><span>Select Image</span></label>
+                <input type="file" name="image" id="image" (change)="onFileSelected($event)" accept="image/*">
+                <div class="image-preview">
+                    @if(imageUrl){
+                    <img class="sub-image-preview" [src]="imageUrl" alt="Image" />
+                    }
+                    @else if (productToEdit.file) {
+                    <img class="sub-image-preview" [src]="initialPath + productToEdit.file" alt="Image" />
+                    }
+                </div>
+            </div>
+            <div class="general-category-container">
+                <div class="title-category-container">
+                    <div class="category-tile">
+                        <span>Category</span>
+                    </div>
+                    <div class="category-arrow">
+                        <span>↓</span>
+                    </div>
+                </div>
+                <ul class="category-container">
+                    <li><span class="material-symbols-outlined fruits" [class.selected]="productToEdit.category === 4"
+                            (click)="category(4)"> nutrition </span></li>
+                    <li><span class="material-symbols-outlined vegetable"
+                            [class.selected]="productToEdit.category === 3" (click)="category(3)"> icecream </span></li>
+                    <li><span class="material-symbols-outlined meat" [class.selected]="productToEdit.category === 5"
+                            (click)="category(5)"> egg_alt </span></li>
+                    <li><span class="material-symbols-outlined drinks" [class.selected]="productToEdit.category === 6"
+                            (click)="category(6)"> local_bar </span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="stock-general-container">
+            <div class="stock-container">
+                <div class="stock-title">
+                    <span>Stock</span>
+                </div>
+                <div class="stock-subtract" tabindex="0" role="button" (click)="substrack()">
+                    <span class="material-symbols-outlined"> remove </span>
+                </div>
+                <input type="number" class="stock-input" [value]="productToEdit.stock" (input)="onStockChange($event)"
+                    min="0" max="1000" formControlName="stock" />
+                <div class="stock-add" tabindex="0" role="button" (click)="add()">
+                    <span class="material-symbols-outlined"> add </span>
+                </div>
+            </div>
+        </div>
+        <div class="price-general-container">
+            <div class="price-container">
+                <div class="price-title">
+                    <span>Price</span>
+                </div>
+                <input type="number" class="price-input" [value]="productToEdit.price" (input)="onPriceChange($event)"
+                    name="price" formControlName="price" min="0" max="1000" />
+                <div class="dolar-container">
+                    <span class="material-symbols-outlined"> attach_money </span>
+                </div>
+            </div>
+        </div>
+        <div class="botton-container">
+            <button class="reset-button" (click)="delete()"><span>Delete</span></button>
+            @if(myForm.valid){
+            <button class="send-button"><span>Edit</span></button>
+            }
+            @else{
+            <button class="send-button unable"><span>Edit</span></button>
+            }
+        </div>
+    </form>
+</div>
