@@ -5,14 +5,13 @@ import { ProductsReqService } from '../../../Services/ReqRepository/productsReq.
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarService } from '../../../shared/AngularSnackBar/snack-bar.service';
 
 
 @Component({
   selector: 'app-edit-product',
   standalone: true,
-  imports: [[FormsModule], [ReactiveFormsModule], [CommonModule], [ToastrModule]],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, ToastrModule],
   templateUrl: './edit-product.component.html',
   styleUrls: [
     './Styles/create-product.component.css',

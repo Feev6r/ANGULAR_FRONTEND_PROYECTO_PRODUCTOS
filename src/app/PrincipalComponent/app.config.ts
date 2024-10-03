@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { ApplicationConfig } from '@angular/core';
 import { routes } from './app.routes';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { errorHandlerInterceptor } from '../Interceptors/error-handler.interceptor';
@@ -14,6 +14,7 @@ export const appConfig: ApplicationConfig = {
 
 
     // provideAnimations(),
+
     provideToastr({ timeOut: 900, preventDuplicates: true }),
     provideRouter(routes),
     provideHttpClient(
