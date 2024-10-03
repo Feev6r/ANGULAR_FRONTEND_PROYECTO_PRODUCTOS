@@ -5,8 +5,8 @@ import { ProductsReqService } from '../../../Services/ReqRepository/productsReq.
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
-import { BrowserModule } from '@angular/platform-browser';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarService } from '../../../shared/AngularSnackBar/snack-bar.service';
 
 
 @Component({
@@ -45,7 +45,7 @@ export class EditProductComponent implements OnChanges {
 
   initialPath: string = "https://res.cloudinary.com/dpgknohvo/"
 
-  constructor(private _productService: ProductsReqService, private router: Router, private toastr: ToastrService) {
+  constructor(private _productService: ProductsReqService, private router: Router, private snackBar: SnackBarService, private toastr: ToastrService) {
 
     this.myForm = new FormGroup({
       title: new FormControl(this.productToEdit.title, [Validators.required, Validators.maxLength(36)]),
@@ -145,7 +145,7 @@ export class EditProductComponent implements OnChanges {
       this.myForm.patchValue({ stock: this.productToEdit.stock })
     }
 
-    this.toastr.info("hola", "Saludo")
+
 
   }
 
@@ -154,8 +154,8 @@ export class EditProductComponent implements OnChanges {
       this.productToEdit.stock++;
       this.myForm.patchValue({ stock: this.productToEdit.stock })
     }
-
-    console.log(this.myForm.value.stock)
+    this.toastr.success("hola", "Saludi");
+    // this.snackBar.openSnackBar("hola hola", "cerrar");
   }
 
   onStockChange(event: any) {

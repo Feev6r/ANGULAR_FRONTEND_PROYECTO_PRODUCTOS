@@ -1,4 +1,4 @@
-form input:not([type="file"],[ type="number"]), textarea{
+form input:not([type="file"],[type="number"]), textarea{
     background-color: #666666;
     border: none;
     color: white;
