@@ -1,4 +1,4 @@
-import { Component, Input, input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from '../../../Services/products.service';
 import { ShowProductComponent } from '../../Show-Products-Edit-Products/mostrar-productos/Show-Product.component';
@@ -16,14 +16,17 @@ import { EditProductComponent } from "../edit-product/edit-product.component";
   imports: [CommonModule, PublicationFilterComponent, ShowProductComponent, EditProductComponent],
 })
 export class EditComponent {
-  productToEdit: ProductObj = new ProductObj();
 
+  productToEdit: ProductObj = new ProductObj();
   Products: Product_Reading[] = [];
   ActualProduct: Product_Reading = {};
 
 
+  constructor(private _producstService: ProductsService) {
 
-  constructor(private _producstService: ProductsService) { }
+
+  }
+
 
   async GetInfoProducts(filter: FilterProducts) {
     let info = await this._producstService.GetProducts(filter);

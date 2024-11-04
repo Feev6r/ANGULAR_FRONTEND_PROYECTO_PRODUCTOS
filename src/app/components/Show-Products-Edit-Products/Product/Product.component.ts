@@ -13,6 +13,7 @@ import {
   PublicationFilterComponent,
   FilterProducts,
 } from '../../publication-filter/publication-filter.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-publicaciones',
@@ -46,7 +47,8 @@ export class ProductComponent implements OnInit {
   constructor(
     private _producstService: ProductsService,
     private _producstReqService: ProductsReqService,
-    private _authService: AuthServiceService
+    private _authService: AuthServiceService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void { }
@@ -76,9 +78,11 @@ export class ProductComponent implements OnInit {
   }
 
   test() {
-    this._producstReqService.testService().subscribe((data) => {
-      console.log(data);
-    });
+    // this._producstReqService.testService().subscribe((data) => {
+    //   console.log(data);
+    // });
+
+    this._router.navigate(['']);
   }
 
   getProducts() {

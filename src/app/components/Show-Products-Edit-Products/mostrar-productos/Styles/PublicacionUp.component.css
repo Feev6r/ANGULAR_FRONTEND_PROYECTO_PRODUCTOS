@@ -35,11 +35,12 @@
     background-color: #666666;
     padding: 5px;
     margin-right: 5px;
-    /* font-size: 1.4rem; */
     font-size: 2.2vh;
 
     display: flex;
     align-items: center;
+    border-radius: 5px;
+
 }
 
 .categoria .material-symbols-outlined{
@@ -71,6 +72,8 @@
     margin: 0px 12px;
 
     text-align: center;
+    border-radius: 5px;
+
 
 }
 
@@ -78,6 +81,35 @@
     background-color: #C0A43F;
     padding: 5px 15px ;
     margin: 0px 0px 0px 12px;
+    border-radius: 5px;
+
 
 }
+
+
+.quantity{
+    background-color: #949494;
+    padding: 5px 15px ;
+    margin-left: 12px;
+    border-radius: 5px;
+
+}
+
+
+@media screen and (max-width: 800px) {
+    .quantity{
+        display: none;
+    }
+  } 
+
+  @media screen and (max-width: 500px) {
+    .price-text {
+        display: none;
+    }
+    .stock-text{
+        display: none;
+
+    }
+  } 
+
 

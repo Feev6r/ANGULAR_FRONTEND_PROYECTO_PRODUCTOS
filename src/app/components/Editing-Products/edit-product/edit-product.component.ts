@@ -1,11 +1,11 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, HostListener, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ProductObj } from '../../../Models/Product_Reading.component';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductsReqService } from '../../../Services/ReqRepository/productsReq.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
-import { SnackBarService } from '../../../shared/AngularSnackBar/snack-bar.service';
+
 
 
 @Component({
@@ -28,7 +28,6 @@ import { SnackBarService } from '../../../shared/AngularSnackBar/snack-bar.servi
 })
 export class EditProductComponent implements OnChanges {
 
-
   @Input() productToEdit: ProductObj = new ProductObj();
 
   imageUrl: string | ArrayBuffer | null = null;
@@ -44,7 +43,7 @@ export class EditProductComponent implements OnChanges {
 
   initialPath: string = "https://res.cloudinary.com/dpgknohvo/"
 
-  constructor(private _productService: ProductsReqService, private router: Router, private snackBar: SnackBarService, private toastr: ToastrService) {
+  constructor(private _productService: ProductsReqService, private router: Router, private toas: ToastrService) {
 
     this.myForm = new FormGroup({
       title: new FormControl(this.productToEdit.title, [Validators.required, Validators.maxLength(36)]),
@@ -60,17 +59,25 @@ export class EditProductComponent implements OnChanges {
       price: this.productToEdit.price,
     });
 
-
   }
 
-  // canDeactivate(): CanDeactivateType {
 
-  //   const deactivateSubject = new Subject<boolean>();
-  // }
+  hasUnsavedChangesFlag: boolean = false;  // Simulate unsaved changes
 
-  // showSuccess() {
-  //   this.toastr.success('Message successfully sent!', 'Success');
-  // }
+
+
+
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any): void {
+    if (this.hasUnsavedChanges()) {
+      $event.returnValue = true;  // Show browser confirmation dialog
+    }
+  }
+
+  hasUnsavedChanges(): boolean {
+    return this.hasUnsavedChangesFlag;
+  }
+
 
   ngOnChanges(changes: SimpleChanges): void {
 
@@ -81,12 +88,16 @@ export class EditProductComponent implements OnChanges {
         stock: this.productToEdit.stock,
         price: this.productToEdit.price,
         // image: this.productToEdit.file
+
       });
+      // this.hasUnsavedChangesFlag = true;
     }
   }
 
 
   onSubmit() {
+    this.hasUnsavedChangesFlag = false;
+
     this.FormData.append('title', this.myForm.value.title);
     this.FormData.append('description', this.myForm.value.description);
     this.FormData.append('idCategory', String(this.productToEdit.category));
@@ -114,6 +125,7 @@ export class EditProductComponent implements OnChanges {
         this.imageUrl = reader.result;
       };
 
+      this.hasUnsavedChangesFlag = true;
       this.convertFileToBlob(file);
 
     }
@@ -142,9 +154,9 @@ export class EditProductComponent implements OnChanges {
     if (this.productToEdit.stock > 0) {
       this.productToEdit.stock--;
       this.myForm.patchValue({ stock: this.productToEdit.stock })
+      this.hasUnsavedChangesFlag = true;
+
     }
-
-
 
   }
 
@@ -152,9 +164,10 @@ export class EditProductComponent implements OnChanges {
     if (this.productToEdit.stock < 10000) {
       this.productToEdit.stock++;
       this.myForm.patchValue({ stock: this.productToEdit.stock })
+      this.hasUnsavedChangesFlag = true;
+
     }
-    this.toastr.success("hola", "Saludi");
-    // this.snackBar.openSnackBar("hola hola", "cerrar");
+
   }
 
   onStockChange(event: any) {
@@ -163,6 +176,7 @@ export class EditProductComponent implements OnChanges {
     else if (event.target.value > 10000) this.product.stock = 0;
     else this.product.stock = event.target.value;
 
+    this.hasUnsavedChangesFlag = true;
 
   }
 
@@ -173,7 +187,7 @@ export class EditProductComponent implements OnChanges {
 
 
     this.product.title = event.target.value;
-
+    this.hasUnsavedChangesFlag = true;
   }
 
   onDescriptionChange(event: any) {
@@ -183,11 +197,13 @@ export class EditProductComponent implements OnChanges {
 
     this.product.description = event.target.value;
 
+    this.hasUnsavedChangesFlag = true;
   }
 
   onPriceChange(event: any) {
 
     this.product.price = event.target.value;
+    this.hasUnsavedChangesFlag = true;
 
   }
 
@@ -197,14 +213,21 @@ export class EditProductComponent implements OnChanges {
 
   category(categoryNumber: number) {
     this.productToEdit.category = categoryNumber;
+    this.hasUnsavedChangesFlag = true;
+
   }
 
 
   delete() {
-    // this._productService.Delete(this.productToEdit.productId!).subscribe(x =>{
-    //   location.reload();
-    // })
+    this.hasUnsavedChangesFlag = false;
+
+    this._productService.Delete(this.productToEdit.productId!).subscribe(x => {
+      location.reload();
+    })
+
+
   }
+
 
 }
 

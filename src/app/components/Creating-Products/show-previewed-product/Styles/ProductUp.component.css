@@ -88,6 +88,16 @@
 
 }
 
+@media screen and (max-width: 500px) {
+    .price-text {
+        display: none;
+    }
+    .stock-text{
+        display: none;
+
+    }
+  } 
+
 
 /* ---------------- */
 

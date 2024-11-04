@@ -20,7 +20,7 @@ export const errorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
       errorMessage = `Error: ${error.error.message}`;
     }
     else { //Error backend
-      if (error.status === 401) {
+      if (error.status === 401 || error.status === 403) {
 
 
         //si existe se pone en 0 para poder hacer login

@@ -6,18 +6,16 @@ import { CookieService } from 'ngx-cookie-service';
 export const isAlreadyLoginGuard: CanActivateFn = (route, state) => {
 
   const router = inject(Router);
-  // const cookie = inject(CookieService);
+  const cookie = inject(CookieService);
 
-  // if (cookie.check('UserSession')) {
+  if (cookie.check('UserSession')) {
 
-  //   if (cookie.get('UserSession') === "1") {
-  //     router.navigate(['']);
-  //     return false;
-  //   }
+    if (cookie.get('UserSession') === "1") {
+      router.navigate(['']);
+      return false;
+    }
 
-
-
-  // }
+  }
 
   return true;
 };

@@ -8,19 +8,15 @@
 main{
     background-color: #A79277;
     height: 900px;
-    /* height: 90vh; */
     margin-right: 5px;
-    /* margin-left: 5px; */
     flex: 1.8;
-    
-    border-radius: 8px;
-    /* min-width: 370px; */
+    border-radius: 5px;
     min-width: 576px;
-
     display: grid;
     align-content: start;
     overflow-y: scroll;
     overflow-x: auto;
+
 
 }
 
@@ -36,10 +32,11 @@ aside{
     /* margin-left: 5px; */
     margin-right: 5px;
     flex: 1;
-    
     /* min-width: 576px; */
     min-width: 576px;
     /* border-radius: 8px; */
+    border-radius: 5px;
+
 
 }
 

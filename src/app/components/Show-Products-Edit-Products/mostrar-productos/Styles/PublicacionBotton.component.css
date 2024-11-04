@@ -1,10 +1,13 @@
 .contenedor.Abajo{
     margin: 5px 12px 12px 12px;
+
 }
 
 .descripcionContenedor{
     background-color: #666666;
     display: grid;
+    border-radius: 5px;
+
 }
 
 
@@ -27,7 +30,7 @@
     align-items: end;
     justify-content: end;
 
-    margin-left: 30px;
+    margin-left: 40px;
 }
 
 @media screen and (max-width: 980px) {
@@ -43,21 +46,33 @@
     cursor: pointer;
     user-select: none;
     margin-right: 5px;
-    font-size: 2vh;
+    font-size: 2vh;   
+    border-radius: 5px;
 
-    
 }
 
 
 
 .delete{
+    display: flex;
     padding: 10px 30px;
     background-color: #9C3737;
     cursor: pointer;
     user-select: none;
     margin-left: 5px;
 
+    /* align-content: center; */
+    text-align: center;
+    border-radius: 5px;
+
 }
+
+  
+@media screen and (max-width: 800px) {
+    .delete{
+        display: none;
+    }
+  } 
 
 
 /* Buttons Interaction */
@@ -79,4 +94,6 @@
 .delete:active{
     transform: scale(0.96);
 }
+
+
 

@@ -26,6 +26,8 @@ display: flex;
 
     text-align: center;
     font-family: 'Josefin Sans', sans-serif;
+    border-radius: 0px !important;
+
 
 }
 

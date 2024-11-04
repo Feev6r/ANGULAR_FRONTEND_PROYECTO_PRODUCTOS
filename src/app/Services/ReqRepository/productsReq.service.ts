@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { Observable } from 'rxjs';
-import { Product_Reading, ProductObj } from '../../Models/Product_Reading.component';
+import { Order, Product_Reading, ProductObj } from '../../Models/Product_Reading.component';
 import { Injectable } from '@angular/core';
 
 
@@ -32,6 +32,7 @@ export class ProductsReqService {
   Delete(productId: number) {
     return this.http.delete<any>(`${environment.apiUrlBase}Products/delete${productId}`, { withCredentials: true })
   }
+
 
   //#region debuggin requests
   Image(idProduct: number) {

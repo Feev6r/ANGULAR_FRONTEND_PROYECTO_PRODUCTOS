@@ -5,21 +5,21 @@ import { errorHandlerInterceptor } from '../Interceptors/error-handler.intercept
 import { headerManipulatorInterceptor } from '../Interceptors/header-manipulator.interceptor';
 import { provideToastr } from 'ngx-toastr';
 import { provideRouter } from '@angular/router';
-// import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { GuardsServiceService } from '../Services/guards-service.service';
 
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
 
-
-    // provideAnimations(),
-
+    provideAnimations(),
     provideToastr({ timeOut: 900, preventDuplicates: true }),
     provideRouter(routes),
     provideHttpClient(
       withInterceptors([headerManipulatorInterceptor, errorHandlerInterceptor]),
       withFetch()
+
     ),
 
 

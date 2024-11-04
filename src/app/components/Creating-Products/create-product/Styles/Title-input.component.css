@@ -5,13 +5,10 @@
     margin: 15px 20px;
     display: flex;
     font-size: 1.4em;
-
 }
-
 
 .title-creation{
     padding: 8px;
-    /* margin: 5px; */
     background-color: #666666;
     border-radius: 5px;
 }
@@ -20,10 +17,6 @@
     margin: 0px 0px 0px 10px;
     flex: 1;
     border-radius: 5px;
-    /* border-color: antiquewhite; */
-    /* border-width: 5px; */
-    /* border-color: cadetblue; */
-
 }
 
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BlobContentModel, ProductObj } from '../../../Models/Product_Reading.component';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -56,10 +56,26 @@ export class CreateProductComponent {
   }
 
 
+
+  hasUnsavedChangesFlag: boolean = false;  // Simulate unsaved changes
+
+
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any): void {
+    if (this.hasUnsavedChanges()) {
+      $event.returnValue = true;  // Show browser confirmation dialog
+    }
+  }
+
+  hasUnsavedChanges(): boolean {
+    return this.hasUnsavedChangesFlag;
+  }
+
+
   onSubmit() {
     this.myForm.value.stock = this.product.stock;
     this.myForm.value.category = this.product.category;
-
+    this.hasUnsavedChangesFlag = false;
 
     this.FormData.append('title', this.myForm.value.title);
     this.FormData.append('description', this.myForm.value.description);
@@ -68,10 +84,9 @@ export class CreateProductComponent {
     this.FormData.append('price', String(this.myForm.value.price));
 
     this._productService.CreateProducts(this.FormData).subscribe(x => {
-
+      location.reload();
     })
 
-    // location.reload();
 
   }
 
@@ -88,6 +103,7 @@ export class CreateProductComponent {
         this.imageUrl = reader.result;
       };
 
+      this.hasUnsavedChangesFlag = true;
 
       this.convertFileToBlob(file);
 
@@ -117,6 +133,8 @@ export class CreateProductComponent {
     if (this.product.stock > 0) {
       this.product.stock--;
       this.previewObj.emit(this.product);
+      this.hasUnsavedChangesFlag = true;
+
     }
   }
 
@@ -124,6 +142,8 @@ export class CreateProductComponent {
     if (this.product.stock < 10000) {
       this.product.stock++;
       this.previewObj.emit(this.product);
+      this.hasUnsavedChangesFlag = true;
+
     }
   }
 
@@ -131,7 +151,10 @@ export class CreateProductComponent {
 
     if (event.target.value < 0) this.product.stock = 0;
     else if (event.target.value > 10000) this.product.stock = 0;
-    else this.product.stock = event.target.value;
+    else {
+      this.product.stock = event.target.value;
+      this.hasUnsavedChangesFlag = true;
+    }
 
     if (this.product.stock != 0) this.previewObj.emit(this.product);
   }
@@ -143,6 +166,8 @@ export class CreateProductComponent {
 
 
     this.product.title = event.target.value;
+    this.hasUnsavedChangesFlag = true;
+
     this.previewObj.emit(this.product);
   }
 
@@ -151,14 +176,20 @@ export class CreateProductComponent {
     if (this.myForm.get('description')?.errors?.['maxlength']) this.descriptionClass = "description-input wrong";
     else this.descriptionClass = "description-input"
 
+
     this.product.description = event.target.value;
     this.previewObj.emit(this.product);
+    this.hasUnsavedChangesFlag = true;
+
   }
 
   onPriceChange(event: any) {
 
     this.product.price = event.target.value;
+
     this.previewObj.emit(this.product);
+    this.hasUnsavedChangesFlag = true;
+
   }
 
   onSomethingChange() {
@@ -166,8 +197,12 @@ export class CreateProductComponent {
   }
 
   category(categoryNumber: number) {
+
     this.product.category = categoryNumber;
     this.previewObj.emit(this.product);
+
+    this.hasUnsavedChangesFlag = true;
+
   }
 
 

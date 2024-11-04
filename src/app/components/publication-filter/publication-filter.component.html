@@ -1,12 +1,21 @@
 <div class="filter-Container">
   <ul>
-    <li [ngStyle]="ButtonMinPrice" role="button" tabindex="0" (click)="clickMinPrice()">
-      <span>Min price</span>
+    <li role="button" tabindex="0" (click)="clickMinPrice()">
+      <span class="button-filter" [class.onClick]="state === 1">Min price</span>
     </li>
-    <li [ngStyle]="ButtonMaxPrice" role="button" tabindex="0" (click)="clickMaxPrice()">
-      <span>Max price</span>
+    <li role="button" tabindex="0" (click)="clickMaxPrice()">
+      <span class="button-filter" [class.onClick]="state === 2">Max price</span>
     </li>
-    <li class="category">
+    @if (isOrderRute) {
+    <li role="button" tabindex="0" (click)="deleteAllOrders()">
+      <span class="delete-Orders">Delete All</span>
+    </li>
+
+    <li>
+      <span class="button-filter show-total-price">Total price {{totalPrice}}$</span>
+    </li>
+    }
+    <li class="category" [class.ubication]="isOrderRute !== true">
       <span>Category</span>
       <ul class="dropdown">
         <li>

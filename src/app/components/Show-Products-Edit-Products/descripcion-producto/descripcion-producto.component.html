@@ -2,7 +2,7 @@
   <div class="sub-cotenedor">
     <div class="seccion title">{{ Product?.title }}</div>
     <div class="seccion image">
-      <img [ngStyle]="imgStyle" [src]="initialPath + Product?.imageRute" alt="imagen" (load)="IsAlreadyLoaded()" />
+      <img [ngStyle]="imgStyle" [src]="initialPath + Product?.imageRoute" alt="imagen" (load)="IsAlreadyLoaded()" />
 
       @if (!ImageComplete) {
       <app-loading-circle></app-loading-circle>
@@ -20,11 +20,28 @@
         <div class="date-title">Publication date:</div>
         <div class="date-text">{{ Product?.date }}</div>
       </div>
+
+
+      <div class="OrderQuantity-container">
+        <div class="OrderQuantity-title">
+          <span>Quantity</span>
+        </div>
+        <div class="OrderQuantity-subtract" tabindex="0" role="button" (click)="substrack()">
+          <span class="material-symbols-outlined"> remove </span>
+        </div>
+        <input type="number" class="OrderQuantity-input" [value]="orderQuantity" (input)="onStockChange($event)" min="0"
+          max="1000" />
+        <div class="OrderQuantity-add" tabindex="0" role="button" (click)="add()">
+          <span class="material-symbols-outlined"> add </span>
+        </div>
+      </div>
+
+
       @if(Product?.title == null || !canBuy){
-      <div class="buy-button-wrong">Buy</div>
+      <div role="button" tabindex="0" class="buy-button-wrong">Order</div>
       }
       @else{
-      <div class="buy-button">Buy</div>
+      <div role="button" tabindex="0" class="buy-button" (click)="makeOrder()">Order</div>
       }
     </div>
   </div>

@@ -1,9 +1,12 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { OrdersReqService } from '../../Services/ReqRepository/orders-req.service';
 
 export interface FilterProducts {
   productFilter: string;
   categoryFilter: string;
+  isOrder: string;
 }
 
 @Component({
@@ -15,64 +18,52 @@ export interface FilterProducts {
     '../../shared/category_colors.component.css'],
 })
 export class PublicationFilterComponent implements OnInit {
-
   @Output() FilterEmiter_Product: EventEmitter<FilterProducts> = new EventEmitter<FilterProducts>();
   @Output() Change: EventEmitter<number> = new EventEmitter<number>();
 
+  constructor(
+    private router: Router,
+    private _ordersServiceReq: OrdersReqService
+
+  ) {
+  }
+
   PressCategory: boolean = false;
-
-  ButtonMinPrice: any = {
-    background: '',
-    isPressed: false,
-  };
-  ButtonMaxPrice: any = {
-    background: '',
-    isPressed: false,
-  };
-
+  state: number = 0;
+  isOrderRute: boolean = false;
+  totalPrice: number = 0;
   filter: FilterProducts = {
     productFilter: 'All',
     categoryFilter: 'All',
+    isOrder: (this.router.url === '/orders').toString()
   };
 
-  constructor() { }
   ngOnInit(): void {
     this.FilterEmiter_Product.emit(this.filter);
+    this.isOrderRute = this.router.url === '/orders'
+    if (this.isOrderRute) this.getTotalPrice();
   }
 
   clickMinPrice() {
-    if (this.ButtonMinPrice.isPressed) {
-      this.ButtonMinPrice.background = '';
-      this.ButtonMaxPrice.background = '';
+    if (this.state === 1) {
       this.filter.productFilter = 'All';
-
-      this.ButtonMinPrice.isPressed = false;
-    } else {
-      this.ButtonMinPrice.background = '#379C4E';
-      this.ButtonMaxPrice.background = '';
-      this.filter.productFilter = 'MinPrice';
-
-      this.ButtonMinPrice.isPressed = true;
-      this.ButtonMaxPrice.isPressed = false;
+      this.state = 0;
     }
-
+    else {
+      this.filter.productFilter = 'MinPrice';
+      this.state = 1;
+    }
     this.FilterEmiter_Product.emit(this.filter);
   }
 
   clickMaxPrice() {
-    if (this.ButtonMaxPrice.isPressed) {
-      this.ButtonMinPrice.background = '';
-      this.ButtonMaxPrice.background = '';
+    if (this.state === 2) {
       this.filter.productFilter = 'All';
-
-      this.ButtonMaxPrice.isPressed = false;
-    } else {
-      this.ButtonMinPrice.background = '';
-      this.ButtonMaxPrice.background = '#379C4E';
+      this.state = 0;
+    }
+    else {
       this.filter.productFilter = 'MaxPrice';
-
-      this.ButtonMaxPrice.isPressed = true;
-      this.ButtonMinPrice.isPressed = false;
+      this.state = 2;
     }
 
     this.FilterEmiter_Product.emit(this.filter);
@@ -122,5 +113,17 @@ export class PublicationFilterComponent implements OnInit {
     }
   }
 
+  getTotalPrice() {
+    this._ordersServiceReq.GetTotalOrdersPrice().subscribe(x => {
+      this.totalPrice = x;
+    })
+  }
+
+  deleteAllOrders() {
+    this._ordersServiceReq.DeleteOrders().subscribe(x => {
+      console.log(x);
+      location.reload();
+    })
+  }
   //predeterminadamente estara activo relevant, si se hace click en otro, se desactivan todos y se activa el clickeado
 }

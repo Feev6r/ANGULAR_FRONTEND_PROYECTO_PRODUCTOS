@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { Router } from '@angular/router';
-import { Product_Reading, ProductObj } from '../../../Models/Product_Reading.component';
+import { Order, Product_Reading, ProductObj } from '../../../Models/Product_Reading.component';
+import { ProductsReqService } from '../../../Services/ReqRepository/productsReq.service';
+import { OrdersReqService } from '../../../Services/ReqRepository/orders-req.service';
 
 
 @Component({
@@ -20,12 +21,18 @@ export class ShowProductComponent implements OnInit, OnChanges {
   @Output() PublicationIndex: EventEmitter<number> = new EventEmitter<number>();
   @Output() ActualProductToEdit: EventEmitter<ProductObj> = new EventEmitter<ProductObj>();
 
-
   @Input() Products: Product_Reading | undefined;
   @Input() index: number | undefined;
 
-  constructor(private router: Router) {
+  canDelete: boolean = false;
+  canBuy: boolean = true;
+  isOrderUrl: boolean = false;
 
+  constructor(
+    private router: Router,
+    private _productService: ProductsReqService,
+    private _ordersServiceReq: OrdersReqService
+  ) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -35,24 +42,13 @@ export class ShowProductComponent implements OnInit, OnChanges {
     }
   }
 
-  canDelete: boolean = false;
-  canBuy: boolean = true;
-
-
   ngOnInit(): void {
-
-
-
     if (localStorage.getItem('userName') && localStorage.getItem('userName') == this.Products?.author) {
       this.canBuy = false;
     }
-    if (this.router.url === '/edit') this.canDelete = true;
-    else this.canDelete = false;
 
-
-    // this.PublicationIndex.emit(0);
-
-
+    this.isOrderUrl = this.router.url === '/orders'
+    this.canDelete = this.router.url === '/edit';
   }
 
 
@@ -70,27 +66,30 @@ export class ShowProductComponent implements OnInit, OnChanges {
         stock: this.Products?.stock!,
         price: this.Products?.price!,
         category: this.Products?.idCategory!,
-        file: this.Products?.imageRute!,
+        file: this.Products?.imageRoute!,
         productId: this.Products?.idProduct,
       }
-
       this.ActualProductToEdit.emit(productToEdit);
     }
 
   }
 
   delete() {
-    // let deleteFilter = {
-    //   IdProduct: this.Products?.idProduct,
-    //   Uri: this.Products?.imageRute
-    // }
-    // this.productsService.deleteProduct(deleteFilter).subscribe({
-    //   next: (data) =>{
-    //     console.log(data)
-    //   },
-    //   complete: () =>{
-    //   }
-    // })
+    this._productService.Delete(this.Products?.idProduct!).subscribe(x => {
+      location.reload();
+    })
+  }
+
+  deleteOrder() {
+    this._ordersServiceReq.DeleteOrders(this.Products?.idOrder).subscribe(x => {
+      location.reload();
+    })
+  }
+
+  MakeOrder() {
+    this._ordersServiceReq.CreateOrder(new Order(1, this.Products?.idProduct!)).subscribe(x => {
+      location.reload();
+    })
   }
 
   categorySelector(category: number): object | any {

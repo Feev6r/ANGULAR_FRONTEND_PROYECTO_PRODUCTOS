@@ -1,28 +1,43 @@
 .material-symbols-outlined{
     user-select: none;
+    border-radius: 5px;
+
 }
 
 .meat{
     background-color: #CE4646;
+    border-radius: 5px;
+
+
 }
 
 .vegetable{
     background-color: #87A922;
+    border-radius: 5px;
+
 }
 
 .drinks{
     background-color: #3a698a;
+    border-radius: 5px;
+
 }
 
 .fruits{
     background-color: #e37236;
+    border-radius: 5px;
+
 }
 
 .all{
     background-color: #666666;
+    border-radius: 5px;
+
 }
 
 .selected{
     border: solid 3px #ffffff;
+    border-radius: 5px;
+
     /* border:  inset 4px #ffffff; */
 }

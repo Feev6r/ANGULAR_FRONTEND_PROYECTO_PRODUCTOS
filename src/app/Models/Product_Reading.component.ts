@@ -6,10 +6,21 @@ export interface Product_Reading {
     idCategory?: number,
     stock?: number,
     price?: number,
-    views?: number,
     date?: Date,
-    imageRute?: string,
-    idProduct?: number
+    imageRoute?: string,
+    idProduct?: number,
+    orderQuantity?: number,
+    idOrder?: number
+}
+
+export class Order {
+    quantity: number = 0
+    idProduct: number = 0
+
+    constructor(quantity: number, idProduct: number) {
+        this.quantity = quantity;
+        this.idProduct = idProduct;
+    }
 }
 
 export class BlobContentModel {

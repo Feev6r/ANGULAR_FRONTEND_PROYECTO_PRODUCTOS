@@ -34,6 +34,8 @@ aside{
     flex: 1;
     
     min-width: 576px;
+    border-radius: 5px;
+
 
     }
 

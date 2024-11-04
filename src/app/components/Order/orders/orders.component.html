@@ -1,0 +1,7 @@
+<div class="general">
+    <app-publication-filter (FilterEmiter_Product)="GetInfoProducts($event)"></app-publication-filter>
+
+    @for (item of Products; track item.idProduct; let i = $index) {
+    <app-mostrar-productos [Products]="item" [index]="i"></app-mostrar-productos>
+    }
+</div>

@@ -29,6 +29,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 0px !important;
+
 }
 
 .stock-subtract:hover{
@@ -56,6 +58,8 @@
 
 
     font-family: 'Josefin Sans', sans-serif;
+    border-radius: 0px !important;
+
 
 }
 

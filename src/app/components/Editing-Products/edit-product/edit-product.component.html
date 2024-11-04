@@ -81,15 +81,15 @@
                 <div class="price-title">
                     <span>Price</span>
                 </div>
-                <input type="number" class="price-input" [value]="productToEdit.price" (input)="onPriceChange($event)"
-                    name="price" formControlName="price" min="0" max="1000" />
+                <input type="number" step="any" class="price-input" [value]="productToEdit.price"
+                    (input)="onPriceChange($event)" name="price" formControlName="price" min="0" max="1000" />
                 <div class="dolar-container">
                     <span class="material-symbols-outlined"> attach_money </span>
                 </div>
             </div>
         </div>
         <div class="botton-container">
-            <button class="reset-button" (click)="delete()"><span>Delete</span></button>
+            <div class="reset-button" role="button" tabindex="0" (click)="delete()"><span>Delete</span></div>
             @if(myForm.valid){
             <button class="send-button"><span>Edit</span></button>
             }

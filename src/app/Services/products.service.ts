@@ -22,14 +22,14 @@ export class ProductsService {
 
 
     let params = new HttpParams()
-      .set('CuantityFilter', filter.productFilter)
-      .set('CategoryFilter', filter.categoryFilter);
+      .set('QuantityFilter', filter.productFilter)
+      .set('CategoryFilter', filter.categoryFilter)
+      .set('IsOrder', filter.isOrder);
+
 
 
 
     switch (this.router.url) {
-
-
       case '/':
         let Res1 = await lastValueFrom(  //lastValueFrom es una promesa que se resuelve cuando se llega al ultimo elemento
           this._producstService.ProductInfo(params)
@@ -47,6 +47,17 @@ export class ProductsService {
         );
 
         Products = Res2.body!;
+        ActualProduct = Products[0];
+
+        break;
+
+
+      case '/orders':
+        let Res3 = await lastValueFrom(
+          this._producstService.UserProductsInfo(params)
+        );
+
+        Products = Res3.body!;
         ActualProduct = Products[0];
 
         break;

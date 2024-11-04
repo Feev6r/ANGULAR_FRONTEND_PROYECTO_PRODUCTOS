@@ -5,6 +5,7 @@
     font-size: 1.2em;
     color: white;
     margin-bottom: 5px;
+    border-radius: 5px 5px 0px 0px;
     /* margin-right: 10px; */
     /* height: fit-content; */
 
@@ -23,19 +24,30 @@
 
 .filter-Container > ul > li { 
     margin: 2px;
+
+
 }
 
 .filter-Container > ul > li > span {
     display: inline-block;
     padding: 20px 15px;
     cursor: pointer;
+    border-radius: 5px;
 
     /* background-color: #d1cccc; */
 }
 
-.filter-Container > ul > li:last-child{
+.onClick{
+background-color: #379C4E;
+}
+
+
+
+.filter-Container > ul > li:nth-child(4){
     margin-left: auto;
 }
+
+
 
 .filter-Container > ul > li:hover{
     background-color: #434343a9;
@@ -43,6 +55,29 @@
 }
 
 
+
+/* --------------------------------- */
+
+.delete-Orders{
+    background-color: #9C3737;
+}
+
+/* --------------------------------- */
+
+
+.show-total-price{
+    background-color: #C0A43F;
+    user-select: none;
+    cursor: default  !important;
+}
+
+
+
+@media screen and (max-width: 800px) {
+    .show-total-price{
+        display: none !important;
+    }
+  } 
 
 /* DROPDOWN MENU CATEGORY */
 /* ---------------------------------- */
@@ -98,5 +133,12 @@ display: block;
     /* box-shadow: inset 0 0 5px rgb(0, 0, 0); */
     transform: scale(0.95);
     cursor: pointer;
+
+}
+
+
+
+.ubication{
+    margin-left: auto !important;
 
 }

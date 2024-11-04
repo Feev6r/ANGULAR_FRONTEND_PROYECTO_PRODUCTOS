@@ -1,0 +1,14 @@
+.general{
+    background-color:#A79277 ;
+    min-height: 800px;
+    border-radius: 5px;
+    min-width: 576px;
+
+
+
+}
+@media screen and (max-width: 500px) {
+    .general{
+    min-width: 370px;
+    }
+  } 

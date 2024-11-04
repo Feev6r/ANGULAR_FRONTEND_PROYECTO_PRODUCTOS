@@ -17,10 +17,12 @@
 
 
     <div class="informacion">
-      <span>Stock</span>
-      <div class="stock">{{ Products?.stock }}</div>
-      <span>Price</span>
+      <span class="stock-text">Stock</span>
+      <div class="stock">x{{ Products?.stock }}</div>
+      <span class="price-text">Price</span>
       <div class="price">{{ Products?.price }}$</div>
+      @if(isOrderUrl){<div class="quantity">x{{ Products?.orderQuantity }}</div>}
+
     </div>
   </div>
   <div class="contenedor Abajo">
@@ -31,11 +33,14 @@
       </div>
     </div>
     <div class="interaction">
-      @if(canBuy){
-      <div class="buy" role="button" tabindex="0" (click)="obtener()">Buy</div>
+      @if(canBuy && !isOrderUrl){
+      <div class="buy" role="button" tabindex="0" (click)="MakeOrder()">Order</div>
       }
       @if(canDelete){
       <div class="delete" role="button" tabIndex="0" (click)="delete()">Delete</div>
+      }
+      @if(isOrderUrl){
+      <div class="delete" role="button" tabIndex="0" (click)="deleteOrder()">Delete order</div>
       }
     </div>
   </div>

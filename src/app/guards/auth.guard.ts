@@ -24,5 +24,5 @@ export const authGuard: CanActivateFn = (route, state) => {
   return true
 
 
-  //problema: que se cree un objeto con el mismo nombre
+  //problema: que se cree un objeto con el mismo nombre - may cause frontend bugs or something related
 };

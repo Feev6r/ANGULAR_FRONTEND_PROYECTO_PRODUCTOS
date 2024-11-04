@@ -4,17 +4,12 @@
       <span>{{prev?.title}}</span>
     </div>
     <div class="categoria">
-      <!-- @switch (Products?.category) { @case ("Vegetables") {
-        <span class="material-symbols-outlined vegetabol"> icecream </span>
-        } @case ("Fruits") {
-        <span class="material-symbols-outlined fruits"> nutrition </span>
-        } } -->
       <span [ngClass]="categorySelector(prev?.category!).class"> {{categorySelector(prev?.category!).type}} </span>
     </div>
     <div class="informacion">
-      <span>Stock</span>
+      <span class="stock-text">Stock</span>
       <div class="stock">{{prev?.stock}}</div>
-      <span>Price</span>
+      <span class="price-text">Price</span>
       <div class="price">{{prev?.price + "$"}}</div>
     </div>
   </div>
